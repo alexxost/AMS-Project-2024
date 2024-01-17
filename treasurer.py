@@ -283,13 +283,14 @@ class neur_trial:
                     break
                 
             #apart from early stop there can be a case when it stably learns above
-            #threshold but it is just too bad progress 
+            #threshold but it is just too bad progress, for now we skip this models
+            #to accelerate the development process 
             
             if epoch == 1:
                 ref = loss_train
-            elif epoch == math.ceil(self.num_epochs/4):
+            elif epoch == math.ceil(self.num_epochs/3):
                 check = loss_train
-                if ref/check < 1.2:
+                if ref/check < 1.15:
                     print('Early stopping: too slow')
                     break
 
